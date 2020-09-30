@@ -2,7 +2,6 @@ package com.example.Mumen.Project.controllers;
 
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

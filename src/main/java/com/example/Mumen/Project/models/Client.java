@@ -1,12 +1,15 @@
 package com.example.Mumen.Project.models;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -54,6 +57,19 @@ public class Client {
 
 	@CreationTimestamp
 	private Date updatedAt;
+	
+	@OneToMany(mappedBy = "client", cascade = {
+	        CascadeType.ALL
+	    })
+	private List < Commande > commandes;
+
+	public List<Commande> getCommandes() {
+		return commandes;
+	}
+
+	public void setCommandes(List<Commande> commandes) {
+		this.commandes = commandes;
+	}
 
 	public long getId() {
 		return id;
@@ -157,6 +173,22 @@ public class Client {
 
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+
+	public Client(long id, String prenom, String nom, String nomEntreprise, String pays, String adresse,
+			int codePostale, String ville, int mobile, String email, String password) {
+		super();
+		this.id = id;
+		this.prenom = prenom;
+		this.nom = nom;
+		this.nomEntreprise = nomEntreprise;
+		this.pays = pays;
+		this.adresse = adresse;
+		this.codePostale = codePostale;
+		this.ville = ville;
+		this.mobile = mobile;
+		this.email = email;
+		this.password = password;
 	}
 	
 
